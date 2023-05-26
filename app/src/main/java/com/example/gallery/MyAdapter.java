@@ -46,7 +46,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             public void onClick(View v) {
                 //TODO что-то может происходить, если кликнуть на изображение
                 Intent intent = new Intent(context, ImageSize.class);
+                intent.putExtra("num", position);
                 intent.putExtra("image", galleryList.get(position).getPath());
+                intent.putExtra("array", galleryList);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
@@ -76,7 +78,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private void setImageFromPath(String path, ImageView image) {
         File imgFile = new File(path);
         if (imgFile.exists()) {
-            Bitmap myBitmap = ImageHelper.decodeSampleBitmapFromPath(imgFile.getAbsolutePath(), 200, 200);
+            Bitmap myBitmap = ImageHelper.decodeSampleBitmapFromPath(String.valueOf(imgFile), 200, 200);
             image.setImageBitmap(myBitmap);
         }
     }

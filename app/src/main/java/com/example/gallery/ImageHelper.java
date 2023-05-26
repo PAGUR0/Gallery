@@ -2,10 +2,17 @@ package com.example.gallery;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+import android.widget.ImageView;
+
+import java.io.IOException;
 
 /**
  * методы позволяют уменьшить размеры изображения для лучшего представления
  */
+
+
 public class ImageHelper {
     public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int width = options.outWidth;
